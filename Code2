@@ -1,0 +1,208 @@
+-- 1. Initialize and load the Rayfield Library
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu'))()
+
+-- 2. Create the main UI window
+local Window = Rayfield:CreateWindow({
+   Name = "Game Automation Suite",
+   LoadingTitle = "Loading Interfaces...",
+   LoadingSubtitle = "by Premium Scripts",
+   ConfigurationSaving = {
+      Enabled = false -- Disables configuration auto-saving for simplicity
+   }
+})
+
+-- ==========================================
+-- TAB 1: TAG UNLOCKER
+-- ==========================================
+local TagTab = Window:CreateTab("Tag Unlocker", 4483362458)
+
+TagTab:CreateSection("Custom Chat Tags")
+
+TagTab:CreateButton({
+   Name = "Unlock Lab Tag",
+   Callback = function()
+       -- "Paste RemoteFunction for Lab Tag"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock Summer2026 Tag",
+   Callback = function()
+       -- "Paste RemoteFunction for Summer2026 Tag"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock Xmas Tag",
+   Callback = function()
+       -- "Paste RemoteFunction for Xmas Tag"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock XmasLB Tag",
+   Callback = function()
+       -- "Paste RemoteFunction for XmasLB Tag"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock CaseMaker Tag",
+   Callback = function()
+       -- "Paste RemoteFunction for CaseMaker Tag"
+   end,
+})
+
+TagTab:CreateSection("Gem Skins")
+
+TagTab:CreateButton({
+   Name = "Unlock Emerald Star Skin",
+   Callback = function()
+       -- "Paste RemoteFunction for Emerald Star Skin"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock Blue Gem Skin",
+   Callback = function()
+       -- "Paste RemoteFunction for Blue Gem Skin"
+   end,
+})
+
+TagTab:CreateButton({
+   Name = "Unlock Crystal Skin",
+   Callback = function()
+       -- "Paste RemoteFunction for Crystal Skin"
+   end,
+})
+
+
+-- ==========================================
+-- TAB 2: AUTO CASE (Dropdown + Toggle Configuration)
+-- ==========================================
+local CaseTab = Window:CreateTab("Auto Case", 4483362458)
+
+CaseTab:CreateSection("Case Opener Settings")
+
+-- Variables to keep track of state
+local SelectedCase = "Free Case" -- Default value
+local AutoCaseEnabled = false
+
+-- Dropdown to choose a case (Only one can be chosen at a time)
+CaseTab:CreateDropdown({
+   Name = "Select Target Case",
+   Options = {"Free Case", "Vip Free case", "1% Overseer", "Gilded"},
+   CurrentOption = {"Free Case"},
+   MultipleOptions = false,
+   Callback = function(Option)
+       SelectedCase = Option[1]
+   end,
+})
+
+-- Toggle switch to handle the execution loop
+CaseTab:CreateToggle({
+   Name = "Enable Auto Open",
+   CurrentValue = false,
+   Callback = function(Value)
+       AutoCaseEnabled = Value
+       
+       -- Creates an independent background loop so your game doesn't crash/freeze
+       task.spawn(function()
+           while AutoCaseEnabled do
+               if SelectedCase == "Free Case" then
+                   -- "Paste RemoteFunction for Free Case"
+               elseif SelectedCase == "Vip Free case" then
+                   -- "Paste RemoteFunction for Vip Free case"
+               elseif SelectedCase == "1% Overseer" then
+                   -- "Paste RemoteFunction for 1% Overseer"
+               elseif SelectedCase == "Gilded" then
+                   -- "Paste RemoteFunction for Gilded"
+               end
+               task.wait(1) -- Adjust this delay (in seconds) to match case opening animation speeds
+           end
+       end)
+   end,
+})
+
+
+-- ==========================================
+-- TAB 3: AUTO JACKPOT
+-- ==========================================
+local JackpotTab = Window:CreateTab("Auto Jackpot", 4483362458)
+
+JackpotTab:CreateSection("Rumble Automation")
+
+local AutoJackpotEnabled = false
+
+JackpotTab:CreateToggle({
+   Name = "Auto Add Item to Rumble",
+   CurrentValue = false,
+   Callback = function(Value)
+       AutoJackpotEnabled = Value
+       
+       task.spawn(function()
+           while AutoJackpotEnabled do
+               -- "Paste RemoteFunction for Auto Add Item into Rumble"
+               task.wait(1) -- Cooldown timer between item additions
+           end
+       end)
+   end,
+})
+
+
+-- ==========================================
+-- TAB 4: AUTO SELL
+-- ==========================================
+local SellTab = Window:CreateTab("Auto sell", 4483362458)
+
+SellTab:CreateSection("Inventory Liquidation")
+
+local AutoSellEnabled = false
+
+SellTab:CreateToggle({
+   Name = "Enable Auto Sell",
+   CurrentValue = false,
+   Callback = function(Value)
+       AutoSellEnabled = Value
+       
+       task.spawn(function()
+           while AutoSellEnabled do
+               -- "Paste RemoteFunction for Auto sell"
+               task.wait(1) -- Prevents flooding network remote calls too fast
+           end
+       end)
+   end,
+})
+
+
+-- ==========================================
+-- TAB 5: AUTO CLAIMS
+-- ==========================================
+local ClaimTab = Window:CreateTab("Auto claims", 4483362458)
+
+ClaimTab:CreateSection("Reward Automation")
+
+local AutoClaimEnabled = false
+
+ClaimTab:CreateToggle({
+   Name = "Enable Auto Claim",
+   CurrentValue = false,
+   Callback = function(Value)
+       AutoClaimEnabled = Value
+       
+       task.spawn(function()
+           while AutoClaimEnabled do
+               -- "Paste RemoteFunction for Auto claims"
+               task.wait(5) -- Typically rewards have longer cooldowns, adjust as needed
+           end
+       end)
+   end,
+})
+
+-- 3. Trigger a visual alert notification upon execution
+Rayfield:Notify({
+   Title = "System Loaded",
+   Content = "All script tabs are now active.",
+   Duration = 3,
+   Image = 4483362458,
+})
